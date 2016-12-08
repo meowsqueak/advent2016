@@ -1,6 +1,9 @@
 door_id = "abbhdwsy"
 
 import hashlib
+import os
+
+os.system('setterm -cursor off')
 
 def md5(s):
     m = hashlib.md5()
@@ -8,6 +11,8 @@ def md5(s):
     return m.hexdigest()
 
 password = ["_"] * 8
+print("".join(password) + "\r", end="")
+
 j = 0
 count = 0
 while count < 8:
@@ -21,3 +26,4 @@ while count < 8:
     j += 1
 
 print("".join(password))
+os.system('setterm -cursor on')
