@@ -12,14 +12,14 @@ def check_ip(ip):
         hypernet.append(pre)
 
     # check for hypernet ABBA
-    m = re.search("(.)(.)\\2\\1", " ".join(hypernet))
-    if m and m.group(1) != m.group(2):
+    m = re.search(r'(.)((?!\1).)\2\1', " ".join(hypernet))
+    if m:
         print("reject " + ip + str(m))
         return False
 
     # check for non-hypernet ABBA:
-    m = re.search("(.)(.)\\2\\1", " ".join(other))
-    if m and m.group(1) != m.group(2):
+    m = re.search(r'(.)((?!\1).)\2\1', " ".join(other))
+    if m:
         print("candidate: " + ip + str(m))
         return True
 
